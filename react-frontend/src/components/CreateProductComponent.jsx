@@ -13,9 +13,10 @@ class CreateProductComponent extends Component {
             cost: '',
             price: ''
         }
-        this.changeIdHandler = this.changeIdHandler.bind(this);
-        this.changeaNameHandler = this.changeNameHandler.bind(this);
+
+        this.changeNameHandler = this.changeNameHandler.bind(this);
         this.changeBrandHandler = this.changeBrandHandler.bind(this);
+        this.changeCostHandler = this.changeCostHandler.bind(this);
         this.changeCostHandler = this.changeCostHandler.bind(this);
         this.changePriceHandler = this.changePriceHandler.bind(this);
         
@@ -41,7 +42,7 @@ class CreateProductComponent extends Component {
     }
     saveOrUpdateProduct = (e) => {
         e.preventDefault();
-        let product = {name: this.state.name, brand: this.state.brand, cost: this.state.cost, price: this.state.price};
+        let product = {Name: this.state.name, Brand: {Id: '1', Name: 'QUE NO HAY TE DIJE'}, Cost: Number(this.state.cost), Price: Number(this.state.price)};
         console.log('product => ' + JSON.stringify(product));
 
         // step 5
@@ -96,27 +97,22 @@ class CreateProductComponent extends Component {
                                 <div className = "card-body">
                                     <form>
                                         <div className = "form-group">
-                                            <label> Id: </label>
-                                            <input placeholder="Name" name="name" className="form-control" 
-                                                value={this.state.id} onChange={this.changeIdHandler}/>
-                                        </div>
-                                        <div className = "form-group">
-                                            <label> Name: </label>
+                                            <label> Name </label>
                                             <input placeholder="Brand" name="brand" className="form-control" 
                                                 value={this.state.name} onChange={this.changeNameHandler}/>
                                         </div>
                                         <div className = "form-group">
-                                            <label> Brand: </label>
+                                            <label> Brand </label>
                                             <input placeholder="Brand" name="brand" className="form-control" 
                                                 value={this.state.brand} onChange={this.changeBrandHandler}/>
                                         </div>
                                         <div className = "form-group">
-                                            <label> Cost: </label>
+                                            <label> Cost </label>
                                             <input placeholder="Cost" name="cost" className="form-control" 
                                                 value={this.state.cost} onChange={this.changeCostHandler}/>
                                         </div>
                                         <div className = "form-group">
-                                            <label> Price: </label>
+                                            <label> Price </label>
                                             <input placeholder="Price" name="price" className="form-control" 
                                                 value={this.state.price} onChange={this.changePriceHandler}/>
                                         </div>

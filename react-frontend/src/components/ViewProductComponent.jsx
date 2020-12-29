@@ -13,7 +13,7 @@ class ViewProductComponent extends Component {
 
     componentDidMount(){
         ProductService.getProductById(this.state.id).then( res => {
-            this.setState({product: res.data});
+            this.setState({product: res.data[0]});
         })
     }
 
@@ -33,8 +33,12 @@ class ViewProductComponent extends Component {
                             <div> { this.state.product.name }</div>
                         </div>
                         <div className = "row">
-                            <label> Brand: </label>
-                            <div> { this.state.product.brand }</div>
+                            <label> Brand ID: </label>
+                            <div> { this.state.product.brand?.id }</div>
+                        </div>
+                        <div className = "row">
+                            <label> Brand Name: </label>
+                            <div> { this.state.product.brand?.name }</div>
                         </div>
                         <div className = "row">
                             <label> Cost: </label>
@@ -45,7 +49,6 @@ class ViewProductComponent extends Component {
                             <div> { this.state.product.price }</div>
                         </div>
                     </div>
-
                 </div>
             </div>
         )

@@ -27,6 +27,7 @@ class ListProductComponent extends Component {
 
     componentDidMount(){
         ProductService.getProducts().then((res) => {
+            console.log(res.data)
             this.setState({ products: res.data});
         });
     }
@@ -53,6 +54,7 @@ class ListProductComponent extends Component {
                                     <th>Brand</th>
                                     <th>Cost</th>
                                     <th>Price</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -60,8 +62,9 @@ class ListProductComponent extends Component {
                                     this.state.products.map(
                                         product => 
                                         <tr key = {product.id}>
+                                             <td> {product.id} </td>
                                              <td> {product.name} </td>   
-                                             <td> {product.brand}</td>
+                                             <td> {product.brand.id} {product.brand.name}</td>
                                              <td> {product.cost}</td>
                                              <td> {product.price}</td>
                                              <td>
