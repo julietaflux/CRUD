@@ -42,7 +42,7 @@ class CreateProductComponent extends Component {
     }
     saveOrUpdateProduct = (e) => {
         e.preventDefault();
-        let product = {Name: this.state.name, Brand: {Id: '1', Name: 'QUE NO HAY TE DIJE'}, Cost: Number(this.state.cost), Price: Number(this.state.price)};
+        let product = {Name: this.state.name, Brand: {Id: '5febbbfb516608d2f0635667', Name: 'Brand 1'}, Cost: Number(this.state.cost), Price: Number(this.state.price)};
         console.log('product => ' + JSON.stringify(product));
 
         // step 5
