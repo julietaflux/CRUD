@@ -1,26 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import ProductService from '../services/ProductService'
+import { Product } from '../utils/Product.model'
 
-interface Product {
-    name: string
-    brand: {
-        id: string
-        name: string
-    }
-    price: number
-    cost: number
-}
-
-export const ViewProductComponent = (props) => {
-    const [product, setProduct] = useState<Product>(null)
+export const ViewProductComponent = (props: any) => {
+    const [product, setProduct] = useState<Product|null>(null)
     const id = props.match.params.id
 
     useEffect(() => {
-        ProductService.getProductById(this.state.id).then( res => {
+        ProductService.getProductById(id).then( res => {
             setProduct(res.data[0]);
         })
-    }, [])
+    }, [id])
 
+    if (!product) return (
+        <div>Loading...</div>
+    )
     return (
         <div>
             <br></br>
@@ -57,4 +51,4 @@ export const ViewProductComponent = (props) => {
     )
 }
 
-export default ViewProductComponent
+export default ViewProductComponent;

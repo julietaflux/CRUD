@@ -51,7 +51,8 @@ class ListProductComponent extends Component {
                                 <tr>
                                     <th>Id</th>
                                     <th>Name</th>
-                                    <th>Brand</th>
+                                    <th>Brand Id</th>
+                                    <th>Brand Name</th>
                                     <th>Cost</th>
                                     <th>Price</th>
                                     <th>Actions</th>
@@ -64,7 +65,8 @@ class ListProductComponent extends Component {
                                         <tr key = {product.id}>
                                              <td> {product.id} </td>
                                              <td> {product.name} </td>   
-                                             <td> {product.brand.id} {product.brand.name}</td>
+                                             <td> {product.brand.id} </td>   
+                                             <td> {product.brand.name}</td>
                                              <td> {product.cost}</td>
                                              <td> {product.price}</td>
                                              <td>
@@ -77,9 +79,7 @@ class ListProductComponent extends Component {
                                 }
                             </tbody>
                         </table>
-
                  </div>
-
             </div>
         )
     }

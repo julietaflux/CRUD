@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const PRODUCTS_API_BASE_URL = "/products";
+const PRODUCTS_API_BASE_URL = "/products/";
 
 class ProductService {
   getProducts() {

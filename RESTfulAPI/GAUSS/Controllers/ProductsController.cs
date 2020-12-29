@@ -70,7 +70,7 @@ namespace GAUSS.Controllers
         /// <response code="200">Returns the item</response>
         /// <response code="404">If the item is not found</response>      
         [HttpGet]
-        [Route("/products")]
+        [Route("/products/{Id}")]
         [ProducesResponseType(typeof(Product), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<List<Product>>> GetProduct(string Id)
@@ -104,7 +104,7 @@ namespace GAUSS.Controllers
                     return NotFound();
                 }
 
-                return new List<Product> { product};
+                return new List<Product> { product };
             }
             catch (Exception ex)
             {
@@ -142,11 +142,12 @@ namespace GAUSS.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<Product> PostProduct(Product Product)
         {
-            if (Product == null) {
+            if (Product == null)
+            {
                 throw new ArgumentNullException(
             $"Product can not be null.");
             }
-            
+
             try
             {
                 _MongoHelper.AddProduct(Product);
@@ -245,7 +246,7 @@ namespace GAUSS.Controllers
                 var product = await _MongoHelper.DeleteProduct(int.Parse(Id));
                 return product;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return NotFound();
