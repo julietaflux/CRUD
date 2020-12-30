@@ -48,13 +48,13 @@ class ListProductComponent extends Component {
                  <table className="table table-bordered table-sm table-hover table-striped">
                  <thead className="thead">
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Brand Id</th>
-                                    <th>Brand Name</th>
-                                    <th>Cost</th>
-                                    <th>Price</th>
-                                    <th>Actions</th>
+                                    <th className="pl-3">Id</th>
+                                    <th className="pl-3">Name</th>
+                                    <th className="pl-3">Brand Id</th>
+                                    <th className="pl-3">Brand Name</th>
+                                    <th className="pl-3">Cost</th>
+                                    <th className="pl-3">Price</th>
+                                    <th className="pl-3">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -62,13 +62,13 @@ class ListProductComponent extends Component {
                                     this.state.products.map(
                                         product => 
                                         <tr key = {product.id}>
-                                             <td> {product.id} </td>
-                                             <td> {product.name} </td>   
-                                             <td> {product.brand.id} </td>   
-                                             <td> {product.brand.name}</td>
-                                             <td> {product.cost}</td>
-                                             <td> {product.price}</td>
-                                             <td>
+                                             <td className="pl-3"> {product.id} </td>
+                                             <td className="pl-3"> {product.name} </td>   
+                                             <td className="pl-3"> {product.brand.id} </td>   
+                                             <td className="pl-3"> {product.brand.name}</td>
+                                             <td className="pl-3">$ {product.cost}</td>
+                                             <td className="pl-3">$ {product.price}</td>
+                                             <td className="pl-3">
                                                  <button onClick={ () => this.editProduct(product.id)} className="btn btn-primary btn-sm">Update </button>
                                                  <button style={{marginLeft: "10px"}} onClick={ () => this.deleteProduct(product.id)} className="btn btn-secondary btn-sm">Delete </button>
                                                  <button style={{marginLeft: "10px"}} onClick={ () => this.viewProduct(product.id)} className="btn btn-primary btn-sm">View </button>

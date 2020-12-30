@@ -21,30 +21,26 @@ export const ViewProductComponent = (props: any) => {
             <div className = "card col-md-6 offset-md-3">
                 <h3 className = "text-center my-4">Product Details</h3>
                 <div className = "card-body">
-                <div className = "row">
-                        <label className="mr-3"><strong>Id</strong></label>
-                        <div> { product.id }</div>
-                    </div>
-                    <div className = "row">
-                    <label className="mr-3"><strong>Name</strong></label>
-                        <div> { product.name }</div>
-                    </div>
-                    <div className = "row">
-                    <label className="mr-3"><strong>Brand Id</strong></label>
-                        <div> { product.brand?.id }</div>
-                    </div>
-                    <div className = "row">
-                    <label className="mr-3"><strong>Brand Name</strong></label>
-                        <div> { product.brand?.name }</div>
-                    </div>
-                    <div className = "row">
-                    <label className="mr-3"><strong>Cost</strong></label>
-                        <div> { product.cost }</div>
-                    </div>
-                    <div className = "row">
-                    <label className="mr-3"><strong>Price</strong></label>
-                        <div> { product.price }</div>
-                    </div>
+                    <ul className="list-group list-group-flush">
+                        <li className="list-group-item">
+                            <label className="mr-3"><strong>Id</strong></label>{ product.id }
+                        </li>
+                        <li className="list-group-item">
+                            <label className="mr-3"><strong>Name</strong></label>{ product.name }
+                        </li>
+                        <li className="list-group-item">
+                            <label className="mr-3"><strong>Brand Id</strong></label>{ product.brand?.id }
+                        </li>
+                        <li className="list-group-item">
+                            <label className="mr-3"><strong>Brand Name</strong></label>{ product.brand?.name }
+                        </li>
+                        <li className="list-group-item">
+                        <label className="mr-3"><strong>Cost</strong></label>$ { product.cost }
+                        </li>
+                        <li className="list-group-item">
+                        <label className="mr-3"><strong>Price</strong></label>$ { product.price }
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
