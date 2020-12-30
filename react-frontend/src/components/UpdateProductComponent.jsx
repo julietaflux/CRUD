@@ -74,28 +74,28 @@ class UpdateProductComponent extends Component {
                                 <div className = "card-body">
                                     <form>
                                         <div className = "form-group">
-                                            <label> Name: </label>
+                                            <label> Name </label>
                                             <input placeholder="Name" name="name" className="form-control" 
                                                 value={this.state.name} onChange={this.changeNameHandler}/>
                                         </div>
                                         <div className = "form-group">
-                                            <label> Brand: </label>
+                                            <label> Brand </label>
                                             <input placeholder="Brand" name="brand" className="form-control" 
                                                 value={this.state.brand} onChange={this.changeBrandHandler}/>
                                         </div>
                                         <div className = "form-group">
-                                            <label> Cost: </label>
+                                            <label> Cost </label>
                                             <input placeholder="Cost" name="cost" className="form-control" 
                                                 value={this.state.cost} onChange={this.changeCostHandler}/>
                                         </div>
                                         <div className = "form-group">
-                                            <label> Price: </label>
+                                            <label> Price </label>
                                             <input placeholder="Price" name="price" className="form-control" 
                                                 value={this.state.price} onChange={this.changePriceHandler}/>
                                         </div>
 
-                                        <button className="btn btn-success btn-sm" onClick={this.updateProduct}>Save</button>
-                                        <button className="btn btn-danger btn-sm" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
+                                        <button className="btn btn-primary btn-sm" onClick={this.updateProduct}>Save</button>
+                                        <button className="btn btn-secondary btn-sm" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
                                     </form>
                                 </div>
                             </div>

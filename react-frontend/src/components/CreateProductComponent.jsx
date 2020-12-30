@@ -97,7 +97,7 @@ class CreateProductComponent extends Component {
                                             <option value="" selected disabled>Please select a brand</option>
                                             {this.state.brands.map(
                                                 brand => 
-                                                <option key = {brand.id}>{brand.name}</option>
+                                                <option key={brand.id}>{brand.name}</option>
                                             )}
                                             </select>
                                         </div>
