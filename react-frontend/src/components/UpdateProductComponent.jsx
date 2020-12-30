@@ -23,7 +23,8 @@ class UpdateProductComponent extends Component {
         ProductService.getProductById(this.state.id).then( (res) =>{
             let product = res;
             this.setState({
-                id: product.id,
+
+                id: this.props.match.params.id,
                 name: product.name,
                 brand: product.brand,
                 cost: product.cost,
@@ -34,16 +35,10 @@ class UpdateProductComponent extends Component {
 
     updateProduct = (e) => {
         e.preventDefault();
-        let product = {
-            id: this.state.id,
-            name: this.state.name, 
-            brand: this.state.brand, 
-            cost: this.state.cost,
-            price: this.state.price
-        };
+        let product = {Id: this.state.id, Name: this.state.name, Brand: {Id: '5febbbfb516608d2f0635667', Name: 'Brand 1'}, Cost: Number(this.state.cost), Price: Number(this.state.price)};
         console.log('product => ' + JSON.stringify(product));
-        console.log('id => ' + JSON.stringify(this.state.id));
-        ProductService.updateProduct(product).then( res => {
+
+        ProductService.updateProduct(product).then(res =>{
             this.props.history.push('/products');
         });
     }
@@ -75,12 +70,12 @@ class UpdateProductComponent extends Component {
                    <div className = "container">
                         <div className = "row">
                             <div className = "card col-md-6 offset-md-3 offset-md-3">
-                                <h3 className="text-center">Update Product</h3>
+                                <h3 className="text-center py-4">Update Product</h3>
                                 <div className = "card-body">
                                     <form>
                                         <div className = "form-group">
                                             <label> Name: </label>
-                                            <input placeholder="Name" name="firstName" className="form-control" 
+                                            <input placeholder="Name" name="name" className="form-control" 
                                                 value={this.state.name} onChange={this.changeNameHandler}/>
                                         </div>
                                         <div className = "form-group">
@@ -99,13 +94,12 @@ class UpdateProductComponent extends Component {
                                                 value={this.state.price} onChange={this.changePriceHandler}/>
                                         </div>
 
-                                        <button className="btn btn-success" onClick={this.updateProduct}>Save</button>
-                                        <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
+                                        <button className="btn btn-success btn-sm" onClick={this.updateProduct}>Save</button>
+                                        <button className="btn btn-danger btn-sm" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
-
                    </div>
             </div>
         )

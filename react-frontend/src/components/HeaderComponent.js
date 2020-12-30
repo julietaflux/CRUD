@@ -11,7 +11,7 @@ class HeaderComponent extends Component {
     return (
       <div>
         <header>
-          <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+          <nav className="navbar navbar-expand-md navbar-light bg-light">
             <div>
               <a className="navbar-brand">Product Management App</a>
             </div>

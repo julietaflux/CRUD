@@ -12,15 +12,15 @@ class ProductService {
   }
 
   getProductById(productId) {
-    return axios.get(PRODUCTS_API_BASE_URL + "?Id=" + productId);
+    return axios.get(PRODUCTS_API_BASE_URL + productId);
   }
 
   updateProduct(product) {
-    return axios.put(PRODUCTS_API_BASE_URL + "?Id=" + product);
+    return axios.patch(PRODUCTS_API_BASE_URL, product);
   }
 
   deleteProduct(productId) {
-    return axios.delete(PRODUCTS_API_BASE_URL + "?Id=" + productId);
+    return axios.delete(PRODUCTS_API_BASE_URL + productId);
   }
 }
 

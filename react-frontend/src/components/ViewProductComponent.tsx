@@ -19,30 +19,30 @@ export const ViewProductComponent = (props: any) => {
         <div>
             <br></br>
             <div className = "card col-md-6 offset-md-3">
-                <h3 className = "text-center"> View Product Details</h3>
+                <h3 className = "text-center my-4">Product Details</h3>
                 <div className = "card-body">
                 <div className = "row">
-                        <label> Id: </label>
+                        <label className="mr-3"><strong>Id</strong></label>
                         <div> { product.id }</div>
                     </div>
                     <div className = "row">
-                        <label> Name: </label>
+                    <label className="mr-3"><strong>Name</strong></label>
                         <div> { product.name }</div>
                     </div>
                     <div className = "row">
-                        <label> Brand ID: </label>
+                    <label className="mr-3"><strong>Brand Id</strong></label>
                         <div> { product.brand?.id }</div>
                     </div>
                     <div className = "row">
-                        <label> Brand Name: </label>
+                    <label className="mr-3"><strong>Brand Name</strong></label>
                         <div> { product.brand?.name }</div>
                     </div>
                     <div className = "row">
-                        <label> Cost: </label>
+                    <label className="mr-3"><strong>Cost</strong></label>
                         <div> { product.cost }</div>
                     </div>
                     <div className = "row">
-                        <label> Price: </label>
+                    <label className="mr-3"><strong>Price</strong></label>
                         <div> { product.price }</div>
                     </div>
                 </div>

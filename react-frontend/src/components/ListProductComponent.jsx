@@ -22,7 +22,7 @@ class ListProductComponent extends Component {
         this.props.history.push(`/view-product/${id}`);
     }
     editProduct(id){
-        this.props.history.push(`/add-product/${id}`);
+        this.props.history.push(`/update-product/${id}`);
     }
 
     componentDidMount(){
@@ -39,15 +39,14 @@ class ListProductComponent extends Component {
     render() {
         return (
             <div>
-                 <h2 className="text-center">Products List</h2>
+                 <h4 className="text-center my-4">Products List</h4>
                  <div className = "row">
-                    <button className="btn btn-primary" onClick={this.addProduct}>Add Product</button>
+                    <button className="btn btn-primary btn-sm" onClick={this.addProduct}>Add Product</button>
                  </div>
                  <br></br>
                  <div className = "row">
-                        <table className = "table table-striped table-bordered">
-
-                            <thead>
+                 <table className="table table-bordered table-sm table-hover table-striped">
+                 <thead className="thead">
                                 <tr>
                                     <th>Id</th>
                                     <th>Name</th>
@@ -70,9 +69,9 @@ class ListProductComponent extends Component {
                                              <td> {product.cost}</td>
                                              <td> {product.price}</td>
                                              <td>
-                                                 <button onClick={ () => this.editProduct(product.id)} className="btn btn-info">Update </button>
-                                                 <button style={{marginLeft: "10px"}} onClick={ () => this.deleteProduct(product.id)} className="btn btn-danger">Delete </button>
-                                                 <button style={{marginLeft: "10px"}} onClick={ () => this.viewProduct(product.id)} className="btn btn-info">View </button>
+                                                 <button onClick={ () => this.editProduct(product.id)} className="btn btn-primary btn-sm">Update </button>
+                                                 <button style={{marginLeft: "10px"}} onClick={ () => this.deleteProduct(product.id)} className="btn btn-secondary btn-sm">Delete </button>
+                                                 <button style={{marginLeft: "10px"}} onClick={ () => this.viewProduct(product.id)} className="btn btn-primary btn-sm">View </button>
                                              </td>
                                         </tr>
                                     )

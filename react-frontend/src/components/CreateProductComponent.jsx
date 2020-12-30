@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import BrandService from '../services/BrandService';
 import ProductService from '../services/ProductService';
 
 class CreateProductComponent extends Component {
@@ -6,7 +7,7 @@ class CreateProductComponent extends Component {
         super(props)
 
         this.state = {
-            // step 2
+            brands: [],
             id: this.props.match.params.id,
             name: '',
             brand: '',
@@ -22,10 +23,14 @@ class CreateProductComponent extends Component {
         
     }
 
-    // step 3
     componentDidMount(){
-
-        // step 4
+        BrandService.getBrands().then( (res) =>{
+            let brands = res.data;
+            this.setState({
+                brands: brands
+            })
+        })
+        
         if(this.state.id === '_add'){
             return
         }else{
@@ -37,24 +42,18 @@ class CreateProductComponent extends Component {
                     cost: product.cost,
                     price: product.price
                 });
-            });
+            });  
         }        
     }
+
     saveOrUpdateProduct = (e) => {
         e.preventDefault();
-        let product = {Name: this.state.name, Brand: {Id: '5febbbfb516608d2f0635667', Name: 'Brand 1'}, Cost: Number(this.state.cost), Price: Number(this.state.price)};
+        let product = {Name: this.state.name, Brand: { Id: '5febbbfb516608d2f0635667', Name: 'Brand 1' }, Cost: Number(this.state.cost), Price: Number(this.state.price)};
         console.log('product => ' + JSON.stringify(product));
 
-        // step 5
-        if(this.state.id === '_add'){
-            ProductService.createProduct(product).then(res =>{
-                this.props.history.push('/products');
-            });
-        }else{
-            ProductService.updateProduct(product).then( res => {
-                this.props.history.push('/products');
-            });
-        }
+        ProductService.createProduct(product).then(res =>{
+            this.props.history.push('/products');
+        });
     }
     
     changeNameHandler= (event) => {
@@ -73,17 +72,10 @@ class CreateProductComponent extends Component {
         this.setState({price: event.target.value});
     }
 
-    cancel(){
+    cancel() {
         this.props.history.push('/products');
     }
 
-    getTitle(){
-        if(this.state.id === '_add'){
-            return <h3 className="text-center">Add Product</h3>
-        }else{
-            return <h3 className="text-center">Update Product</h3>
-        }
-    }
     render() {
         return (
             <div>
@@ -91,34 +83,37 @@ class CreateProductComponent extends Component {
                    <div className = "container">
                         <div className = "row">
                             <div className = "card col-md-6 offset-md-3 offset-md-3">
-                                {
-                                    this.getTitle()
-                                }
+                                <h3 className="text-center my-4">Add Product</h3>
                                 <div className = "card-body">
                                     <form>
                                         <div className = "form-group">
-                                            <label> Name </label>
+                                            <label>Name</label>
                                             <input placeholder="Brand" name="brand" className="form-control" 
                                                 value={this.state.name} onChange={this.changeNameHandler}/>
                                         </div>
-                                        <div className = "form-group">
-                                            <label> Brand </label>
-                                            <input placeholder="Brand" name="brand" className="form-control" 
-                                                value={this.state.brand} onChange={this.changeBrandHandler}/>
+                                        <div className="form-group">
+                                            <label htmlFor="exampleFormControlSelect1">Brand</label>
+                                            <select value={this.state.brand} onChange={this.changeBrandHandler} className="form-control" id="exampleFormControlSelect1">
+                                            <option value="" selected disabled>Please select a brand</option>
+                                            {this.state.brands.map(
+                                                brand => 
+                                                <option key = {brand.id}>{brand.name}</option>
+                                            )}
+                                            </select>
                                         </div>
                                         <div className = "form-group">
-                                            <label> Cost </label>
+                                            <label>Cost</label>
                                             <input placeholder="Cost" name="cost" className="form-control" 
                                                 value={this.state.cost} onChange={this.changeCostHandler}/>
                                         </div>
                                         <div className = "form-group">
-                                            <label> Price </label>
+                                            <label>Price</label>
                                             <input placeholder="Price" name="price" className="form-control" 
                                                 value={this.state.price} onChange={this.changePriceHandler}/>
                                         </div>
 
-                                        <button className="btn btn-success" onClick={this.saveOrUpdateProduct}>Save</button>
-                                        <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
+                                        <button className="btn btn-primary btn-sm" onClick={this.saveOrUpdateProduct}>Save</button>
+                                        <button className="btn btn-secondary btn-sm" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
                                     </form>
                                 </div>
                             </div>

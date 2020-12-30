@@ -23,6 +23,10 @@ function App() {
               component={CreateProductComponent}
             ></Route>
             <Route
+              path="/update-product/:id"
+              component={UpdateProductComponent}
+            ></Route>
+            <Route
               path="/view-product/:id"
               component={ViewProductComponent}
             ></Route>
