@@ -21,10 +21,9 @@ class UpdateProductComponent extends Component {
 
     componentDidMount(){
         ProductService.getProductById(this.state.id).then( (res) =>{
-            let product = res;
+            let product = res.data;
+            debugger
             this.setState({
-
-                id: this.props.match.params.id,
                 name: product.name,
                 brand: product.brand,
                 cost: product.cost,
@@ -74,22 +73,22 @@ class UpdateProductComponent extends Component {
                                 <div className = "card-body">
                                     <form>
                                         <div className = "form-group">
-                                            <label> Name </label>
+                                            <label>Name</label>
                                             <input placeholder="Name" name="name" className="form-control" 
                                                 value={this.state.name} onChange={this.changeNameHandler}/>
                                         </div>
                                         <div className = "form-group">
-                                            <label> Brand </label>
+                                            <label>Brand</label>
                                             <input placeholder="Brand" name="brand" className="form-control" 
                                                 value={this.state.brand} onChange={this.changeBrandHandler}/>
                                         </div>
                                         <div className = "form-group">
-                                            <label> Cost </label>
+                                            <label>Cost</label>
                                             <input placeholder="Cost" name="cost" className="form-control" 
                                                 value={this.state.cost} onChange={this.changeCostHandler}/>
                                         </div>
                                         <div className = "form-group">
-                                            <label> Price </label>
+                                            <label>Price</label>
                                             <input placeholder="Price" name="price" className="form-control" 
                                                 value={this.state.price} onChange={this.changePriceHandler}/>
                                         </div>
