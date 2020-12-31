@@ -14,15 +14,13 @@ export const useEditProduct = ({
 }: UseEditProductParams = {}) => {
   const [product, setProduct] = useState<Product | null>(initialProduct);
   const [brands, setBrands] = useState<Brand[]>([]);
-  const [validPrice, setValidPrice] = useState<Boolean>();
+  const isComplete =
+    !!product &&
+    Object.entries(product).every(([key, val]) => {
+      return key !== "id" ? Boolean(val) : true;
+    });
 
-  useEffect(() => {
-    if (!product?.price && !product?.cost) return;
-    setValidPrice(product.cost < product.price);
-  }, [product]);
-
-  // if (productId) // estamos updateando
-  // else if (initialProduct) // estamos creando
+  const validPrice = !!product && product.cost < product.price;
 
   useEffect(() => {
     if (!productId && !initialProduct) return;
@@ -71,6 +69,7 @@ export const useEditProduct = ({
   };
 
   return {
+    isComplete,
     validPrice,
     brands,
     product,
