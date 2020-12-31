@@ -73,7 +73,7 @@ export const CreateProductComponent = (props: any) => {
                                         <input placeholder="Price" name="price" className={"form-control " + (validPrice ? 'is-valid' : 'is-invalid')}
                                         value={product?.price} onChange={changePrice}/>
                                         {
-                                            validPrice! && <span className="invalid-feedback">Price value can not be less than cost value</span> 
+                                            !validPrice && <span className="invalid-feedback">Price value can not be less than cost value</span> 
                                         }
                                     </div>
                                     <button className={"btn btn-sm " + (validPrice ? 'btn-primary' : 'disabled')} onClick={saveProduct} disabled={!validPrice}>Save</button>
