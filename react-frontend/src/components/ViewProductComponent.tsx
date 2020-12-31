@@ -15,7 +15,6 @@ export const ViewProductComponent = (props: any) => {
   if (!product) return <div>Loading...</div>;
   return (
     <div>
-      <br></br>
       <div className="card col-md-6 offset-md-3">
         <h3 className="text-center my-4">Product Details</h3>
         <div className="card-body">

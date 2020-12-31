@@ -25,7 +25,7 @@ export const CreateProductComponent = (props: any) => {
     changePrice,
   } = useEditProduct({ initialProduct });
 
-  const saveProduct = (e: any) => {
+  const saveProduct = async (e: any) => {
     if (!product) return;
     e.preventDefault();
     let p = {
@@ -36,9 +36,8 @@ export const CreateProductComponent = (props: any) => {
     };
     console.log("product => " + JSON.stringify(p));
 
-    ProductService.createProduct(p).then((res) => {
-      props.history.push("/products");
-    });
+    await ProductService.createProduct(p);
+    props.history.push("/products");
   };
 
   const cancel = () => {
@@ -47,7 +46,6 @@ export const CreateProductComponent = (props: any) => {
 
   return (
     <div>
-      <br></br>
       <div className="container">
         <div className="row">
           <div className="card col-md-6 offset-md-3 offset-md-3">
